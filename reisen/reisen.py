@@ -11,7 +11,7 @@ def generate_content(base_url, filetree, template):
             path = base_url + year + "/" + destination + "/"
             with open(path + "meta.toml", "rb") as fh: meta = tomllib.load(fh)
             title = meta["title"]
-            content += f'<div id="{year}_{destination}">\n<h3>{title}</h3>\n<div>\n'
+            content += f'<div id="{year}_{destination}">\n<h2>{title}</h2>\n<div>\n'
 
             for chapter in sorted(filetree[year][destination]):
                 path = base_url + year + "/" + destination + "/"
@@ -50,9 +50,11 @@ def generate_links(base_dir, filetree, template):
 
     for year in sorted(filetree, reverse=True):
         for destination in filetree[year]:
+            links += '<div class="links">'
             path = base_dir + year + "/" + destination + "/"
             with open(path + "/meta.toml", "rb") as fh: meta = tomllib.load(fh)
-            links += f'<li><a href="{year}_{destination}.html">{meta['title']}</a></li>\n'
+            links += f'<a href="{year}_{destination}.html">{meta['title']}</a>\n'
+            links += '</div>'
 
     with open(template, "r") as fh: page = fh.read()
     with open("index.html", "w") as fh: fh.write(page.replace("{links}", links))
