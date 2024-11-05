@@ -11,4 +11,4 @@ fi
 source $ENV
 
 ln -sn $IMG_PATH $WORKDIR/reisen/out_img
-ln -sn $CV_PATH $WORKDIR/cv
+ln -sn $CV_PATH $WORKDIR/pdf
