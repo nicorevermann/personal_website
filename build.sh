@@ -10,5 +10,5 @@ fi
 
 source $ENV
 
-ln -s $IMG_PATH $WORKDIR/reisen/out_img
-ln -s $CV_PATH $WORKDIR/cv
+ln -sn $IMG_PATH $WORKDIR/reisen/out_img
+ln -sn $CV_PATH $WORKDIR/cv
